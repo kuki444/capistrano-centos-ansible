@@ -46,18 +46,19 @@
     chdir={{ work_dir }}/{{ ruby_archive_version_name }}
   when: ruby_test_vars.rc == 1
 
-- name: zlib Makefileにソースコードパス追加
-  lineinfile:
-    dest={{ work_dir }}/{{ ruby_archive_version_name }}/ext/zlib/Makefile
-    line={{ item }}
-  with_items:
-    - 'top_srcdir = {{ work_dir }}/{{ ruby_archive_version_name }}'
-
-- name: Rubyのビルド3 ext/zlib (ruby extconf)
+- name: Rubyのビルド3 ext/zlib (ruby extconf.rb)
   command:
     ruby extconf.rb
     chdir={{ work_dir }}/{{ ruby_archive_version_name }}/ext/zlib
   when: ruby_test_vars.rc == 1
+
+- name: zlib Makefileにソースコードパス追加
+  lineinfile:
+    dest={{ work_dir }}/{{ ruby_archive_version_name }}/ext/zlib/Makefile
+    insertafter='^srcdir = .'
+    line={{ item }}
+  with_items:
+    - 'top_srcdir = {{ work_dir }}/{{ ruby_archive_version_name }}'
 
 - name: Rubyのビルド5 ext/zlib (make)
   command:
@@ -65,7 +66,7 @@
     chdir={{ work_dir }}/{{ ruby_archive_version_name }}/ext/zlib
   when: ruby_test_vars.rc == 1
 
-- name: Rubyのインストール
+- name: Ruby zlibのインストール
   become: yes
   command:
     make install
