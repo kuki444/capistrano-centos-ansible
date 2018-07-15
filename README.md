@@ -40,6 +40,22 @@ cd /usr/local/src/capistrano-centos-ansible
 cd capistrano-centos-ansible
 ansible-playbook -i hosts site.yml
 ```
+
+## capistrano
+### capistranoの設定
+mkdir test
+cd test
+cap install
+
+### capistranoの実行
+cap production deploy
+
+### テスト
+cap production deploy --trace --dry-run
+
+### link
+https://gitlab.com/ydkn/capistrano-git-copy
+
 ## ライセンス
 
 MIT License
