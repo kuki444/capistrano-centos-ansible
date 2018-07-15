@@ -13,3 +13,11 @@
     user_install=no
   environment:
     PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: capistrano-git-copyのインストール
+  become: yes
+  gem:
+    name=capistrano-git-copy
+    user_install=no
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
