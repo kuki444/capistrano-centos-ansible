@@ -1,0 +1,11 @@
+# ダウンロードするRubyのソースコード
+ruby_version: 2.5
+ruby_archive_version: 2.5.1
+ruby_archive_version_name: ruby-{{ ruby_archive_version }}
+ruby_url_dir: https://cache.ruby-lang.org/pub/ruby/{{ ruby_version }}
+ruby_archive_ext: tar.bz2
+ruby_archive_name: "ruby-{{ ruby_archive_version }}.{{ ruby_archive_ext }}"
+
+ruby_file_name: /usr/local/bin/ruby
+work_dir: /tmp/capistrano-setup
+

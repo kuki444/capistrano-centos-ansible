@@ -1,0 +1,12 @@
+- hosts: capistrano-server
+
+  roles:
+    - system
+    - ruby
+    - capistrano
+
+  post_tasks:
+    - name: 完了
+      debug:
+        msg: |+
+          'インストールが完了しました。'

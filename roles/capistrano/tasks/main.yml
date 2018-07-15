@@ -1,0 +1,15 @@
+- name: capistranoのインストール
+  become: yes
+  gem:
+    name=capistrano
+    user_install=no
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: capistrano-extのインストール
+  become: yes
+  gem:
+    name=capistrano-ext
+    user_install=no
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
